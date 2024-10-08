@@ -4,18 +4,26 @@ import (
 	"fmt"
 )
 
-func containsduplicate(nums []int) bool {
-	m := make(map[int]bool)
-	for _, num := range nums {
-		if _, ok := m[num]; ok {
-			return true
-		}
-		m[num] = true
+func findStudentByID(id int, students map[int]string) (string, error) {
+	name, found := students[id]
+	if !found {
+		return "", fmt.Errorf("студент с id %d не найден", id)
 	}
-	return false
+	return name, nil
 }
 
 func main() {
-	numbers := []int{1, 2, 3, 4, 5, 6, 7, 1, 2, 3}
-	fmt.Println(containsduplicate(numbers))
+	students := map[int]string{
+		1: "Иванов",
+		2: "Петров",
+		3: "Сидоров",
+	}
+
+	id := 6
+	name, err := findStudentByID(id, students)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("Студент с ID %d: %s\n", id, name)
+	}
 }
