@@ -1,8 +1,6 @@
-print("x y z w f1 f2")
-for x in range(0, 2):
-    for y in range(0, 2):
-        for z in range(0, 2):
-            for w in range(0, 2):
-                f1 = (x or y)
-                f2 = (y and x)
-                print(x, y, z, w, "", int(f1), "", int(f2))
+count = 0
+for x in range(1, 12):
+    for y in range(1, 12):
+        if (y > x * 3 ** 0.5) or (y < (x - 8) * 3 ** 0.5) or (y > (64 - 16)**(1/2)):
+            count += 1
+print(count)
